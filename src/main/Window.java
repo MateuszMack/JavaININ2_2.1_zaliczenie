@@ -10,8 +10,8 @@ public class Window {
         jframe = new JFrame();
 //wymiary okna gry, widoczność okna, wyłącznie.
         jframe.setSize(600, 600);
-        jframe.setVisible(true);
         jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        jframe.setVisible(true);
 
 
     }
