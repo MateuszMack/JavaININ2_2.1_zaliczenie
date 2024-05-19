@@ -7,6 +7,7 @@ public class Game {
         //konstruktor
         gamePanel = new GamePanel();
         window = new Window(gamePanel);
+        gamePanel.requestFocus();
 
     }
 }

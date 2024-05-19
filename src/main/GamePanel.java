@@ -1,5 +1,7 @@
 package main;
 
+import inputs.Keyboard;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -7,12 +9,13 @@ import java.awt.*;
 public class GamePanel extends JPanel {
     public GamePanel(){
 
+        addKeyListener(new Keyboard());
 
     }
     //paintComponent do "malowania" w oknie, czyszczenia i tworzenia grafik na nowo.
     public void paintComponent(Graphics g){
         super.paintComponent((g));
 
-        g.drawRect(30,30,300,300);
+        g.fillRect(30,30,300,300);
     }
 }

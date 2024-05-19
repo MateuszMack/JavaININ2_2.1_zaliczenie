@@ -12,6 +12,7 @@ public class Window {
         jframe.setSize(600, 600);
         jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jframe.add(gamePanel);
+        jframe.setLocationRelativeTo(null); //ustawia okno na środku ekranku.
         jframe.setVisible(true);
 
 
