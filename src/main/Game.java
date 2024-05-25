@@ -9,7 +9,53 @@ public class Game {
         window = new Window(gamePanel);
         gamePanel.requestFocus();
 
+
     }
+
+
+
+    ///Zamiast tego "1", jest to niżej ("2")
+
+    //1
+    /*
+    public void update() {
+        levelManager.update();
+        player.update();
+    }
+    public void render(Graphics g) {
+        levelManager.draw(g);
+        player.render(g);
+    }
+    */
+
+    //2
+    public void update() {
+        switch (Gamestate.state) {
+            case MENU:
+
+            break;
+            case PLAYING:
+                levelManager.update();
+                player.update();
+                break;
+            default:
+                break;
+        }
+    }
+    public void render (Graphics g) {
+        switch (Gamestate.state) {
+            case MENU:
+
+                break;
+            case PLAYING:
+                levelManager.draw(g);
+                player.render(g);
+                break;
+            default:
+                break;
+        }
+    }
+
 }
 //kupcia dupcia
 //Kamil to nie jest to co my mamy robić!
