@@ -10,6 +10,8 @@ import java.awt.*;
 public class GamePanel extends JPanel {
     private Mouse mouse;
     private int xDelta = 30, yDelta = 30;
+    private int frames=0;
+    private long lastCheck = 0;
 
     public GamePanel(){
 
@@ -21,17 +23,14 @@ public class GamePanel extends JPanel {
 
     public void changeXDelta(int value){
         this.xDelta+=value;
-        repaint();
     }
     public void changeYDelta(int value){
         this.yDelta+=value; //zmiana pozycji o okresloną w Keyboard wartość.
-        repaint(); //odświeżanie po zmianie pozycji.
     }
 //porusza się z kursorem.
     public void setByMouse(int x, int y){
         this.xDelta = x;
         this.yDelta = y;
-        repaint();
     }
 
     //paintComponent do "malowania" w oknie, czyszczenia i tworzenia grafik na nowo.
@@ -39,5 +38,16 @@ public class GamePanel extends JPanel {
         super.paintComponent((g));
 
         g.fillRect(xDelta, yDelta,300,300);
+
+        frames++;
+        if(System.currentTimeMillis() - lastCheck >=1000){
+            lastCheck = System.currentTimeMillis();
+            System.out.println("FPS: "+ frames);
+            frames = 0;
+
+        }
+
+        repaint(); //odświeżanie po zmianie pozycji.
+
     }
 }
