@@ -19,27 +19,32 @@ public class Keyboard implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
 
-        switch (e.getKeyCode()){
-            case KeyEvent.VK_W:
-                gamePanel.changeYDelta(-1);
+        switch(Gamestate.state) {
+            case MENU:
+                gamePanel.getGame().getMenu().keyPressed (e);
                 break;
-            case KeyEvent.VK_A:
-                gamePanel.changeXDelta(-1);
+            case PLAYING:
+                gamePanel.getGame().getPlaying().keyPressed (e);
                 break;
-            case KeyEvent.VK_S:
-                gamePanel.changeYDelta(1);
-                break;
-            case KeyEvent.VK_D:
-                gamePanel.changeXDelta(1);
-                break;
-
+            default: break;
         }
+
 
 
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
+
+        switch(Gamestate.state) {
+            case MENU:
+                gamePanel.getGame().getMenu().keyReleased (e);
+                break;
+            case PLAYING:
+                gamePanel.getGame().getPlaying().keyReleased (e);
+                break;
+            default: break;
+        }
 
     }
 }

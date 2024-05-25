@@ -16,7 +16,16 @@ public class Mouse implements MouseListener, MouseMotionListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        System.out.println("Klik");
+        switch(Gamestate.state) {
+            case MENU:
+                gamePanel.getGame ().getMenu(.mouseClicked(e);
+                break;
+            case PLAYING:
+                gamePanel.getGame().getPlaying (). mouseClicked(e);
+                break;
+            default:
+                break;
+        }
     }
 
     @Override

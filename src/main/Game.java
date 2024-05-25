@@ -1,4 +1,8 @@
 package main;
+
+import gamestates.Menu;
+import gamestates.Playing;
+
 //główna klasa gry
 public class Game {
     private Window window;
@@ -11,25 +15,50 @@ public class Game {
 
     }
 
-    public void update() { switch (Gamestate.state) { case MENU:
+
+    private Playing playing;
+    private Menu menu;
+
+
+    private void initClasses () {
+        menu = new Menu(this);
+        playing = new Playing(this);
+    }
+
+
+    public void update() { switch (Gamestate.state) {
+        case MENU:
+            menu.update();
         break;
         case PLAYING:
-            levelManager.update();
-            player.update();
+            playing.update();
             break;
         default:
             break;
     }
     }
     public void render (Graphics g) {
-        switch (Gamestate.state) { case MENU:
-        break; case PLAYING:
-        levelManager.draw(g);
-        player.render(g);
+        switch (Gamestate.state) {
+            case MENU:
+                menu.draw(g);
+        break;
+        case PLAYING:
+            playing.draw(g);
         break;
         default: break;
     }
 }
+
+
+    public void windowFocus Lost() {
+        if (Gamestate.state == Gamestate.PLAYING)
+        playing.getPlayer().resetDirBooleans();
+    }
+
+    public Menu getMenu() { return menu;
+    }
+    public Playing getPlaying() { return playing;
+    }
 }
 //kupcia dupcia
 //Kamil to nie jest to co my mamy robić!
