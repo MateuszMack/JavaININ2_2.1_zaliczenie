@@ -11,5 +11,3 @@ public class Game {
 
     }
 }
-//kupcia dupcia
-//Kamil to nie jest to co my mamy robić!
