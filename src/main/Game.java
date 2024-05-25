@@ -1,36 +1,52 @@
 package main;
-//główna klasa gry
-public class Game {
-    private Window window;
+
+public class Game implements Runnable {
+
+    private GameWindow gameWindow;
     private GamePanel gamePanel;
-    public Game(){
-        //konstruktor
+    private Thread gameThread;
+    private final int FPS_SET = 120;
+
+    public Game() {
+
         gamePanel = new GamePanel();
-        window = new Window(gamePanel);
+        gameWindow = new GameWindow(gamePanel);
         gamePanel.requestFocus();
+        startGameLoop();
 
     }
 
-    public void update() { switch (Gamestate.state) { case MENU:
-        break;
-        case PLAYING:
-            levelManager.update();
-            player.update();
-            break;
-        default:
-            break;
+    private void startGameLoop() {
+        gameThread = new Thread(this);
+        gameThread.start();
     }
+
+    @Override
+    public void run() {
+
+        double timePerFrame = 1000000000.0 / FPS_SET;
+        long lastFrame = System.nanoTime();
+        long now = System.nanoTime();
+
+        int frames = 0;
+        long lastCheck = System.currentTimeMillis();
+
+        while (true) {
+
+            now = System.nanoTime();
+            if (now - lastFrame >= timePerFrame) {
+                gamePanel.repaint();
+                lastFrame = now;
+                frames++;
+            }
+
+            if (System.currentTimeMillis() - lastCheck >= 1000) {
+                lastCheck = System.currentTimeMillis();
+                System.out.println("FPS: " + frames);
+                frames = 0;
+            }
+        }
+
     }
-    public void render (Graphics g) {
-        switch (Gamestate.state) { case MENU:
-        break; case PLAYING:
-        levelManager.draw(g);
-        player.render(g);
-        break;
-        default: break;
-    }
+
 }
-}
-//kupcia dupcia
-//Kamil to nie jest to co my mamy robić!
-//..
