@@ -7,9 +7,10 @@ import main.Game;
 import java.awt.*;
 
 public class Playing extends State implements Statemethods{
-
     private Player player;
     private LevelManager levelManager;
+    private PauseOverlay pauseOverlay;
+    private boolean paused = true;
 
     public Playing(Game game) {
         super(game);
@@ -21,6 +22,7 @@ public class Playing extends State implements Statemethods{
         LevelManager = new LevelManager(game);
         player = new Player(200, 200, (int) (64 * Game.SCALE), (int) (40 * Game.SCALE));
         player.loadLvlData(levelManager.getCurrentLevel().getLevelData());
+        pauseOverlay = new PauseOverlay();
     }
 
 
@@ -29,12 +31,16 @@ public class Playing extends State implements Statemethods{
     public void update() {
         levelManager.update();
         player.update();
+
+        pauseOverlay.update();
     }
 
     @Override
     public void draw(Graphics g) {
         levelManager.draw(g);
         player.render(g);
+
+        PauseOverlay.draw(g);
     }
 
     @Override
@@ -43,19 +49,23 @@ public class Playing extends State implements Statemethods{
             player.setAttacking(true);
     }
 
+
     @Override
     public void mousePressed(MouseEvent e) {
-
+        if (paused)
+            pauseOverlay.mousePressed(e);
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-
+        if (paused)
+            pauseOverlay.mouseReleased(e);
     }
 
     @Override
     public void mouseMoved(MouseEvent e) {
-
+        if (paused)
+            pauseOverlay.mouseMoved(e);
     }
 
     @Override
