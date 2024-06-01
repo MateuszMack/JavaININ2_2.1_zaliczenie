@@ -1,8 +1,11 @@
 package ui;
 
 
+
 import java.awt.Rectangle;
 public class PauseButton {
+
+
 
     protected int x, y, width, height;
     protected Rectangle bounds;
@@ -14,6 +17,7 @@ public class PauseButton {
         this.height =height;
         createBounds();
     }
+
 
     private void createBounds() {
         bounds =new Rectangle(x, y, width, height);
