@@ -8,3 +8,5 @@ public class MainClass {
     }
 
 }
+
+//aktualne do 10.
