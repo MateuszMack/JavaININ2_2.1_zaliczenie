@@ -2,11 +2,9 @@ package ui;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+
 import utilz.LoadSave;
 import static utilz.Constants.UI.VolumeButtons.*;
-
-
-
 
 public class VolumeButton extends PauseButton {
 
@@ -26,7 +24,6 @@ public class VolumeButton extends PauseButton {
         maxX = x + width - VOLUME_WIDTH / 2;
         loadImgs();
     }
-
 
     private void loadImgs() {
         BufferedImage temp = LoadSave.GetSpriteAtlas(LoadSave.VOLUME_BUTTONS);

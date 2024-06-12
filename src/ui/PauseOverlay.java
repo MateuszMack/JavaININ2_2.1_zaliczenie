@@ -3,6 +3,7 @@ package ui;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
+
 import gamestates.Gamestate;
 import gamestates.Playing;
 import main.Game;
@@ -11,9 +12,6 @@ import utilz.LoadSave;
 import static utilz.Constants.UI.PauseButtons.*;
 import static utilz.Constants.UI.URMButtons.*;
 import static utilz.Constants.UI.VolumeButtons.*;
-
-
-
 
 public class PauseOverlay {
 
@@ -30,6 +28,7 @@ public class PauseOverlay {
         createSoundButtons();
         createUrmButtons();
         createVolumeButton();
+
     }
 
     private void createVolumeButton() {
@@ -37,7 +36,6 @@ public class PauseOverlay {
         int vY = (int) (278 * Game.SCALE);
         volumeButton = new VolumeButton(vX, vY, SLIDER_WIDTH, VOLUME_HEIGHT);
     }
-
 
     private void createUrmButtons() {
         int menuX = (int) (313 * Game.SCALE);
@@ -48,7 +46,6 @@ public class PauseOverlay {
         menuB = new UrmButton(menuX, bY, URM_SIZE, URM_SIZE, 2);
         replayB = new UrmButton(replayX, bY, URM_SIZE, URM_SIZE, 1);
         unpauseB = new UrmButton(unpauseX, bY, URM_SIZE, URM_SIZE, 0);
-
 
     }
 
@@ -106,7 +103,6 @@ public class PauseOverlay {
         }
 
     }
-
 
     public void mousePressed(MouseEvent e) {
         if (isIn(e, musicButton))

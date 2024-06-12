@@ -1,13 +1,12 @@
 package entities;
 
 import static utilz.Constants.PlayerConstants.*;
-
 import static utilz.HelpMethods.*;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+
 import main.Game;
 import utilz.LoadSave;
-
 
 public class Player extends Entity {
     private BufferedImage[][] animations;
@@ -19,7 +18,8 @@ public class Player extends Entity {
     private int[][] lvlData;
     private float xDrawOffset = 21 * Game.SCALE;
     private float yDrawOffset = 4 * Game.SCALE;
-    //Jumping /Gravity
+
+    // Jumping / Gravity
     private float airSpeed = 0f;
     private float gravity = 0.04f * Game.SCALE;
     private float jumpSpeed = -2.25f * Game.SCALE;
@@ -30,8 +30,8 @@ public class Player extends Entity {
         super(x, y, width, height);
         loadAnimations();
         initHitbox(x, y, (int) (20 * Game.SCALE), (int) (27 * Game.SCALE));
-    }
 
+    }
 
     public void update() {
         updatePos();
@@ -57,8 +57,6 @@ public class Player extends Entity {
         }
 
     }
-
-
 
     private void setAnimation() {
         int startAni = playerAction;
@@ -121,6 +119,7 @@ public class Player extends Entity {
                     airSpeed = fallSpeedAfterCollision;
                 updateXPos(xSpeed);
             }
+
         } else
             updateXPos(xSpeed);
         moving = true;
@@ -137,7 +136,6 @@ public class Player extends Entity {
     private void resetInAir() {
         inAir = false;
         airSpeed = 0;
-
 
     }
 
@@ -174,8 +172,6 @@ public class Player extends Entity {
         up = false;
         down = false;
     }
-
-
 
     public void setAttacking(boolean attacking) {
         this.attacking = attacking;

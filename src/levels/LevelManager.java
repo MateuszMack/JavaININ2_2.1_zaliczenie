@@ -2,10 +2,9 @@ package levels;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+
 import main.Game;
 import utilz.LoadSave;
-
-
 
 public class LevelManager {
 
@@ -13,13 +12,11 @@ public class LevelManager {
     private BufferedImage[] levelSprite;
     private Level levelOne;
 
-
     public LevelManager(Game game) {
         this.game = game;
         importOutsideSprites();
         levelOne = new Level(LoadSave.GetLevelData());
     }
-
 
     private void importOutsideSprites() {
         BufferedImage img = LoadSave.GetSpriteAtlas(LoadSave.LEVEL_ATLAS);
@@ -30,7 +27,6 @@ public class LevelManager {
                 levelSprite[index] = img.getSubimage(i * 32, j * 32, 32, 32);
             }
     }
-
 
     public void draw(Graphics g, int lvlOffset) {
         for (int j = 0; j < Game.TILES_IN_HEIGHT; j++)

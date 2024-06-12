@@ -4,8 +4,8 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
-import javax.imageio.ImageIO;
 
+import javax.imageio.ImageIO;
 
 public class LoadSave {
 
@@ -27,12 +27,14 @@ public class LoadSave {
         BufferedImage img = null;
         InputStream is = LoadSave.class.getResourceAsStream("/" + fileName);
         try {
+            assert is != null;
             img = ImageIO.read(is);
 
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
             try {
+                assert is != null;
                 is.close();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -40,8 +42,6 @@ public class LoadSave {
         }
         return img;
     }
-
-
 
     public static int[][] GetLevelData() {
         BufferedImage img = GetSpriteAtlas(LEVEL_ONE_DATA);

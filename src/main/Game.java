@@ -5,8 +5,6 @@ import gamestates.Gamestate;
 import gamestates.Menu;
 import gamestates.Playing;
 
-
-
 public class Game implements Runnable {
 
     private GameWindow gameWindow;
@@ -15,11 +13,8 @@ public class Game implements Runnable {
     private final int FPS_SET = 120;
     private final int UPS_SET = 200;
 
-
     private Playing playing;
     private Menu menu;
-
-
 
     public final static int TILES_DEFAULT_SIZE = 32;
     public final static float SCALE = 2f;
@@ -29,7 +24,6 @@ public class Game implements Runnable {
     public final static int GAME_WIDTH = TILES_SIZE * TILES_IN_WIDTH;
     public final static int GAME_HEIGHT = TILES_SIZE * TILES_IN_HEIGHT;
 
-    
     public Game() {
         initClasses();
 
@@ -139,6 +133,3 @@ public class Game implements Runnable {
         return playing;
     }
 }
-//kupcia dupcia
-//Kamil to nie jest to co my mamy robić!
-//....

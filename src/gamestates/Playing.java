@@ -6,14 +6,13 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.util.Random;
+
 import entities.Player;
 import levels.LevelManager;
 import main.Game;
 import ui.PauseOverlay;
 import utilz.LoadSave;
 import static utilz.Constants.Environment.*;
-
-
 
 public class Playing extends State implements Statemethods {
     private Player player;
@@ -27,6 +26,7 @@ public class Playing extends State implements Statemethods {
     private int lvlTilesWide = LoadSave.GetLevelData()[0].length;
     private int maxTilesOffset = lvlTilesWide - Game.TILES_IN_WIDTH;
     private int maxLvlOffsetX = maxTilesOffset * Game.TILES_SIZE;
+
     private BufferedImage backgroundImg, bigCloud, smallCloud;
     private int[] smallCloudsPos;
     private Random rnd = new Random();
@@ -42,8 +42,6 @@ public class Playing extends State implements Statemethods {
         for (int i = 0; i < smallCloudsPos.length; i++)
             smallCloudsPos[i] = (int) (90 * Game.SCALE) + rnd.nextInt((int) (100 * Game.SCALE));
     }
-
-
 
     private void initClasses() {
         levelManager = new LevelManager(game);
@@ -81,9 +79,9 @@ public class Playing extends State implements Statemethods {
 
     @Override
     public void draw(Graphics g) {
-        g.drawImage(backgroundImg, 0, 0, Game.GAME_WIDTH, Game.GAME_HEIGHT, null);
+//		g.drawImage(backgroundImg, 0, 0, Game.GAME_WIDTH, Game.GAME_HEIGHT, null);
 
-        drawClouds(g);
+//		drawClouds(g);
 
         levelManager.draw(g, xLvlOffset);
         player.render(g, xLvlOffset);

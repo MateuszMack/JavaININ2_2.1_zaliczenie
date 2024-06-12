@@ -3,10 +3,10 @@ package ui;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
+
 import gamestates.Gamestate;
 import utilz.LoadSave;
 import static utilz.Constants.UI.Buttons.*;
-
 
 public class MenuButton {
     private int xPos, yPos, rowIndex, index;
@@ -15,7 +15,6 @@ public class MenuButton {
     private BufferedImage[] imgs;
     private boolean mouseOver, mousePressed;
     private Rectangle bounds;
-
 
     public MenuButton(int xPos, int yPos, int rowIndex, Gamestate state) {
         this.xPos = xPos;
@@ -30,7 +29,6 @@ public class MenuButton {
         bounds = new Rectangle(xPos - xOffsetCenter, yPos, B_WIDTH, B_HEIGHT);
 
     }
-
 
     private void loadImgs() {
         imgs = new BufferedImage[3];
