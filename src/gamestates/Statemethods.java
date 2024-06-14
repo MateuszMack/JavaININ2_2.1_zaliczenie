@@ -1,24 +1,24 @@
 package gamestates;
 
+import java.awt.Graphics;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
-import main.Game;
-import ui.MenuButton;
+public interface Statemethods {
+    public void update();
 
-public class State {
+    public void draw(Graphics g);
 
-    protected Game game;
+    public void mouseClicked(MouseEvent e);
 
-    public State(Game game) {
-        this.game = game;
-    }
+    public void mousePressed(MouseEvent e);
 
-    public boolean isIn(MouseEvent e, MenuButton mb) {
-        return mb.getBounds().contains(e.getX(), e.getY());
-    }
+    public void mouseReleased(MouseEvent e);
 
+    public void mouseMoved(MouseEvent e);
 
-    public Game getGame() {
-        return game;
-    }
+    public void keyPressed(KeyEvent e);
+
+    public void keyReleased(KeyEvent e);
+
 }
