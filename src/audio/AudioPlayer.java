@@ -28,10 +28,10 @@ public class AudioPlayer {
 
 	private Clip[] songs, effects;
 	private int currentSongId;
-	private float volume = 0.5f;
+	private float volume = 0.5f;//wielkosc zmiany glosnosci
 	private boolean songMute, effectMute;
 	private Random rand = new Random();
-
+//dzwiek menu
 	public AudioPlayer() {
 		loadSongs();
 		loadEffects();
@@ -54,7 +54,7 @@ public class AudioPlayer {
 		updateEffectsVolume();
 
 	}
-
+//pobieranie audio z pliku
 	private Clip getClip(String name) {
 		URL url = getClass().getResource("/audio/" + name + ".wav");
 		AudioInputStream audio;
@@ -73,25 +73,25 @@ public class AudioPlayer {
 		return null;
 
 	}
-
+//ustawianie gloscnosci
 	public void setVolume(float volume) {
 		this.volume = volume;
 		updateSongVolume();
 		updateEffectsVolume();
 	}
-
+//zatrzymywanie odtwarzania
 	public void stopSong() {
 		if (songs[currentSongId].isActive())
 			songs[currentSongId].stop();
 	}
-
+//regulacja glosnosci
 	public void setLevelSong(int lvlIndex) {
 		if (lvlIndex % 2 == 0)
 			playSong(LEVEL_1);
 		else
 			playSong(LEVEL_2);
 	}
-
+//dzwieki akcji
 	public void lvlCompleted() {
 		stopSong();
 		playEffect(LVL_COMPLETED);
@@ -117,7 +117,7 @@ public class AudioPlayer {
 		songs[currentSongId].setMicrosecondPosition(0);
 		songs[currentSongId].loop(Clip.LOOP_CONTINUOUSLY);
 	}
-
+//wyciszenie muzyki
 	public void toggleSongMute() {
 		this.songMute = !songMute;
 		for (Clip c : songs) {
@@ -125,7 +125,7 @@ public class AudioPlayer {
 			booleanControl.setValue(songMute);
 		}
 	}
-
+//wyciszenie efektow
 	public void toggleEffectMute() {
 		this.effectMute = !effectMute;
 		for (Clip c : effects) {
@@ -135,7 +135,7 @@ public class AudioPlayer {
 		if (!effectMute)
 			playEffect(JUMP);
 	}
-
+//glosnosc muzyki
 	private void updateSongVolume() {
 
 		FloatControl gainControl = (FloatControl) songs[currentSongId].getControl(FloatControl.Type.MASTER_GAIN);
@@ -144,7 +144,7 @@ public class AudioPlayer {
 		gainControl.setValue(gain);
 
 	}
-
+//glosnosc efektow
 	private void updateEffectsVolume() {
 		for (Clip c : effects) {
 			FloatControl gainControl = (FloatControl) c.getControl(FloatControl.Type.MASTER_GAIN);

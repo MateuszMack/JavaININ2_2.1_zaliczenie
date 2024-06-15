@@ -23,7 +23,7 @@ public class Potion extends GameObject {
 		updateAnimationTick();
 		updateHover();
 	}
-
+//poruszanie sie potionka gowa dol
 	private void updateHover() {
 		hoverOffset += (0.075f * Game.SCALE * hoverDir);
 

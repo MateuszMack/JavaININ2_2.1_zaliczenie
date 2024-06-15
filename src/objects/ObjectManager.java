@@ -18,7 +18,7 @@ import static utilz.Constants.Projectiles.*;
 
 public class ObjectManager {
 
-	private Playing playing;
+	private Playing playing; //stan gry
 	private BufferedImage[][] potionImgs, containerImgs;
 	private BufferedImage[] cannonImgs, grassImgs;
 	private BufferedImage[][] treeImgs;
@@ -27,26 +27,27 @@ public class ObjectManager {
 	private ArrayList<GameContainer> containers;
 	private ArrayList<Projectile> projectiles = new ArrayList<>();
 
-	private Level currentLevel;
-
+	private Level currentLevel;//aktualny poziom
+// odniesienie do stanu gry i ładowanie obrazow obiektow
 	public ObjectManager(Playing playing) {
 		this.playing = playing;
 		currentLevel = playing.getLevelManager().getCurrentLevel();
 		loadImgs();
 	}
-
+//sprawdza czy gracz dotyka kolcow
 	public void checkSpikesTouched(Player p) {
 		for (Spike s : currentLevel.getSpikes())
 			if (s.getHitbox().intersects(p.getHitbox()))
 				p.kill();
 	}
+//sprawdza czy przeciwnik dotyka kolcow
 
 	public void checkSpikesTouched(Enemy e) {
 		for (Spike s : currentLevel.getSpikes())
 			if (s.getHitbox().intersects(e.getHitbox()))
 				e.hurt(200);
 	}
-
+//kontakt z potionami
 	public void checkObjectTouched(Rectangle2D.Float hitbox) {
 		for (Potion p : potions)
 			if (p.isActive()) {
@@ -56,14 +57,14 @@ public class ObjectManager {
 				}
 			}
 	}
-
+//efekt potionow
 	public void applyEffectToPlayer(Potion p) {
 		if (p.getObjType() == RED_POTION)
 			playing.getPlayer().changeHealth(RED_POTION_VALUE);
 		else
 			playing.getPlayer().changePower(BLUE_POTION_VALUE);
 	}
-
+//rozbijanie beczek
 	public void checkObjectHit(Rectangle2D.Float attackbox) {
 		for (GameContainer gc : containers)
 			if (gc.isActive() && !gc.doAnimation) {
@@ -77,14 +78,14 @@ public class ObjectManager {
 				}
 			}
 	}
-
+//ladowanie obiektow na nowy poziom
 	public void loadObjects(Level newLevel) {
 		currentLevel = newLevel;
 		potions = new ArrayList<>(newLevel.getPotions());
 		containers = new ArrayList<>(newLevel.getContainers());
 		projectiles.clear();
 	}
-
+//ladowanie wszystkich przedmiotow kolce armaty drzewa itp
 	private void loadImgs() {
 		BufferedImage potionSprite = LoadSave.GetSpriteAtlas(LoadSave.POTION_ATLAS);
 		potionImgs = new BufferedImage[2][7];

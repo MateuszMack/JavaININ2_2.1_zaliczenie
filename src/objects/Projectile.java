@@ -5,7 +5,7 @@ import java.awt.geom.Rectangle2D;
 import main.Game;
 
 import static utilz.Constants.Projectiles.*;
-
+//ustawienia kul armatnich
 public class Projectile {
 	private Rectangle2D.Float hitbox;
 	private int dir;

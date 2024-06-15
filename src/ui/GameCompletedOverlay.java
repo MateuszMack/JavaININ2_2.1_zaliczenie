@@ -9,7 +9,7 @@ import gamestates.Gamestate;
 import gamestates.Playing;
 import main.Game;
 import utilz.LoadSave;
-
+//koniec gry i wyswietlanie przyciskow do wyboru wyjście z gry i powrot do menu
 public class GameCompletedOverlay {
 	private Playing playing;
 	private BufferedImage img;

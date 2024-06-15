@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
 import gamestates.Gamestate;
 import utilz.LoadSave;
 import static utilz.Constants.UI.Buttons.*;
-
+//przyciski do menu
 public class MenuButton {
 	private int xPos, yPos, rowIndex, index;
 	private int xOffsetCenter = B_WIDTH / 2;

@@ -8,7 +8,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 
 import javax.imageio.ImageIO;
-
+// ładowanie grafiki z zasobów aplikacji
 public class LoadSave {
 
 	public static final String PLAYER_ATLAS = "player_sprites.png";

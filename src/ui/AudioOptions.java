@@ -10,7 +10,7 @@ import java.awt.event.MouseEvent;
 import main.Game;
 
 public class AudioOptions {
-
+//audio glosnosc i aktualizacje
 	private VolumeButton volumeButton;
 	private SoundButton musicButton, sfxButton;
 

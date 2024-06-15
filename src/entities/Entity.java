@@ -35,7 +35,7 @@ public abstract class Entity {
 		this.width = width;
 		this.height = height;
 	}
-
+//predkosc i limit poruszania
 	protected void updatePushBackDrawOffset() {
 		float speed = 0.95f;
 		float limit = -30f;
@@ -50,7 +50,7 @@ public abstract class Entity {
 				pushDrawOffset = 0;
 		}
 	}
-
+//sprawdzanie czy można się poruszać dalej inaczej odbijanie
 	protected void pushBack(int pushBackDir, int[][] lvlData, float speedMulti) {
 		float xSpeed = 0;
 		if (pushBackDir == LEFT)
@@ -61,17 +61,17 @@ public abstract class Entity {
 		if (CanMoveHere(hitbox.x + xSpeed * speedMulti, hitbox.y, hitbox.width, hitbox.height, lvlData))
 			hitbox.x += xSpeed * speedMulti;
 	}
-
+//zasieg ataku
 	protected void drawAttackBox(Graphics g, int xLvlOffset) {
 		g.setColor(Color.red);
 		g.drawRect((int) (attackBox.x - xLvlOffset), (int) attackBox.y, (int) attackBox.width, (int) attackBox.height);
 	}
-
+//hitbox
 	protected void drawHitbox(Graphics g, int xLvlOffset) {
 		g.setColor(Color.PINK);
 		g.drawRect((int) hitbox.x - xLvlOffset, (int) hitbox.y, (int) hitbox.width, (int) hitbox.height);
 	}
-
+//inicjacja hitboxa
 	protected void initHitbox(int width, int height) {
 		hitbox = new Rectangle2D.Float(x, y, (int) (width * Game.SCALE), (int) (height * Game.SCALE));
 	}
@@ -87,7 +87,7 @@ public abstract class Entity {
 	public int getAniIndex() {
 		return aniIndex;
 	}
-
+//odswieżenie
 	protected void newState(int state) {
 		this.state = state;
 		aniTick = 0;

@@ -1,7 +1,7 @@
 package utilz;
 
 import main.Game;
-
+//"stałe" takie jak wysokosci czy szerokosci obiektow
 public class Constants {
 
 	public static final float GRAVITY = 0.04f * Game.SCALE;

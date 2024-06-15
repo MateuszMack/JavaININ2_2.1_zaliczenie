@@ -11,8 +11,7 @@ public class BackgroundTree {
 		this.y = y;
 		this.type = type;
 
-		// Sets the aniIndex to a random value, to get some variations for the trees so
-		// they all don't move in synch.
+		// poruszanie sie drzew w sposob losowy
 		Random r = new Random();
 		aniIndex = r.nextInt(4);
 

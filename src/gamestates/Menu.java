@@ -11,7 +11,7 @@ import utilz.LoadSave;
 
 public class Menu extends State implements Statemethods {
 
-    private MenuButton[] buttons = new MenuButton[4];
+    private MenuButton[] buttons = new MenuButton[4];//tablica przyciskow play options credits quit
     private BufferedImage backgroundImg, backgroundImgPink;
     private int menuX, menuY, menuWidth, menuHeight;
 
@@ -22,7 +22,7 @@ public class Menu extends State implements Statemethods {
         backgroundImgPink = LoadSave.GetSpriteAtlas(LoadSave.MENU_BACKGROUND_IMG);
 
     }
-
+//wczytanie tła
     private void loadBackground() {
         backgroundImg = LoadSave.GetSpriteAtlas(LoadSave.MENU_BACKGROUND);
         menuWidth = (int) (backgroundImg.getWidth() * Game.SCALE);
@@ -30,7 +30,7 @@ public class Menu extends State implements Statemethods {
         menuX = Game.GAME_WIDTH / 2 - menuWidth / 2;
         menuY = (int) (25 * Game.SCALE);
     }
-
+//wczytanie przyciskow
     private void loadButtons() {
         buttons[0] = new MenuButton(Game.GAME_WIDTH / 2, (int) (130 * Game.SCALE), 0, Gamestate.PLAYING);
         buttons[1] = new MenuButton(Game.GAME_WIDTH / 2, (int) (200 * Game.SCALE), 1, Gamestate.OPTIONS);
@@ -38,13 +38,11 @@ public class Menu extends State implements Statemethods {
         buttons[3] = new MenuButton(Game.GAME_WIDTH / 2, (int) (340 * Game.SCALE), 2, Gamestate.QUIT);
     }
 
-    @Override
     public void update() {
         for (MenuButton mb : buttons)
             mb.update();
     }
 
-    @Override
     public void draw(Graphics g) {
         g.drawImage(backgroundImgPink, 0, 0, Game.GAME_WIDTH, Game.GAME_HEIGHT, null);
         g.drawImage(backgroundImg, menuX, menuY, menuWidth, menuHeight, null);
@@ -53,7 +51,6 @@ public class Menu extends State implements Statemethods {
             mb.draw(g);
     }
 
-    @Override
     public void mousePressed(MouseEvent e) {
         for (MenuButton mb : buttons) {
             if (isIn(e, mb)) {
@@ -61,8 +58,7 @@ public class Menu extends State implements Statemethods {
             }
         }
     }
-
-    @Override
+//aktualizuje stan gry po wcisnieciu przycisku myszy
     public void mouseReleased(MouseEvent e) {
         for (MenuButton mb : buttons) {
             if (isIn(e, mb)) {
@@ -82,7 +78,6 @@ public class Menu extends State implements Statemethods {
 
     }
 
-    @Override
     public void mouseMoved(MouseEvent e) {
         for (MenuButton mb : buttons)
             mb.setMouseOver(false);
@@ -95,19 +90,14 @@ public class Menu extends State implements Statemethods {
 
     }
 
-    @Override
     public void keyPressed(KeyEvent e) {
     }
 
-    @Override
     public void mouseClicked(MouseEvent e) {
-        // TODO Auto-generated method stub
 
     }
 
-    @Override
     public void keyReleased(KeyEvent e) {
-        // TODO Auto-generated method stub
 
     }
 

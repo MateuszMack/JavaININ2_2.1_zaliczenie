@@ -9,7 +9,7 @@ import static utilz.HelpMethods.IsFloor;
 import gamestates.Playing;
 
 public class Shark extends Enemy {
-
+//hitbox i atak
 	public Shark(float x, float y) {
 		super(x, y, SHARK_WIDTH, SHARK_HEIGHT, SHARK);
 		initHitbox(18, 22);
@@ -21,7 +21,7 @@ public class Shark extends Enemy {
 		updateAnimationTick();
 		updateAttackBoxFlip();
 	}
-
+//ustawienie akcji
 	private void updateBehavior(int[][] lvlData, Playing playing) {
 		if (firstUpdate)
 			firstUpdateCheck(lvlData);
@@ -63,7 +63,7 @@ public class Shark extends Enemy {
 			}
 		}
 	}
-
+//atakowanie
 	protected void attackMove(int[][] lvlData, Playing playing) {
 		float xSpeed = 0;
 

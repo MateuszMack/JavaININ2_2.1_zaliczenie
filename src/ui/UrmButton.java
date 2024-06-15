@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 
 import utilz.LoadSave;
 import static utilz.Constants.UI.URMButtons.*;
-
+//przyciski urm wznownie gry  powrot do menu i wyjscie
 public class UrmButton extends PauseButton {
 	private BufferedImage[] imgs;
 	private int rowIndex, index;

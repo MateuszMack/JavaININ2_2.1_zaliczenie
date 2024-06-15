@@ -48,9 +48,9 @@ public class Level {
 
     private void loadLevel() {
 
-        // Looping through the image colors just once. Instead of one per
-        // object/enemy/etc..
-        // Removed many methods in HelpMethods class.
+        // Looping object/enemy/etc..
+
+
 
         for (int y = 0; y < img.getHeight(); y++)
             for (int x = 0; x < img.getWidth(); x++) {

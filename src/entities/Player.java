@@ -24,24 +24,23 @@ public class Player extends Entity {
 	private float xDrawOffset = 21 * Game.SCALE;
 	private float yDrawOffset = 4 * Game.SCALE;
 
-	// Jumping / Gravity
+	// skakanie i grawitacja
 	private float jumpSpeed = -2.25f * Game.SCALE;
 	private float fallSpeedAfterCollision = 0.5f * Game.SCALE;
 
-	// StatusBarUI
 	private BufferedImage statusBarImg;
 
 	private int statusBarWidth = (int) (192 * Game.SCALE);
 	private int statusBarHeight = (int) (58 * Game.SCALE);
 	private int statusBarX = (int) (10 * Game.SCALE);
 	private int statusBarY = (int) (10 * Game.SCALE);
-
+	//pasek hp
 	private int healthBarWidth = (int) (150 * Game.SCALE);
 	private int healthBarHeight = (int) (4 * Game.SCALE);
 	private int healthBarXStart = (int) (34 * Game.SCALE);
 	private int healthBarYStart = (int) (14 * Game.SCALE);
 	private int healthWidth = healthBarWidth;
-
+//pasek wytrzymalosci
 	private int powerBarWidth = (int) (104 * Game.SCALE);
 	private int powerBarHeight = (int) (2 * Game.SCALE);
 	private int powerBarXStart = (int) (44 * Game.SCALE);
@@ -62,7 +61,7 @@ public class Player extends Entity {
 	private int powerAttackTick;
 	private int powerGrowSpeed = 15;
 	private int powerGrowTick;
-
+//stan, hp, predkosc, polaczenie hp i paska hp, hitbox, atak
 	public Player(float x, float y, int width, int height, Playing playing) {
 		super(x, y, width, height);
 		this.playing = playing;
@@ -74,19 +73,19 @@ public class Player extends Entity {
 		initHitbox(20, 27);
 		initAttackBox();
 	}
-
+//resp
 	public void setSpawn(Point spawn) {
 		this.x = spawn.x;
 		this.y = spawn.y;
 		hitbox.x = x;
 		hitbox.y = y;
 	}
-
+//ustawienie attack boxa
 	private void initAttackBox() {
 		attackBox = new Rectangle2D.Float(x, y, (int) (35 * Game.SCALE), (int) (20 * Game.SCALE));
 		resetAttackBox();
 	}
-
+//aktualizowanie hp i wytrzymalosci i zmiany animacji
 	public void update() {
 		updateHealthBar();
 		updatePowerBar();
@@ -111,7 +110,7 @@ public class Player extends Entity {
 			} else {
 				updateAnimationTick();
 
-				// Fall if in air
+				// zachowanie "w powietrzu"
 				if (inAir)
 					if (CanMoveHere(hitbox.x, hitbox.y + airSpeed, hitbox.width, hitbox.height, lvlData)) {
 						hitbox.y += airSpeed;
@@ -125,7 +124,7 @@ public class Player extends Entity {
 		}
 
 		updateAttackBox();
-
+//atakowanie
 		if (state == HIT) {
 			if (aniIndex <= GetSpriteAmount(state) - 3)
 				pushBack(pushBackDir, lvlData, 1.25f);
@@ -153,7 +152,7 @@ public class Player extends Entity {
 		updateAnimationTick();
 		setAnimation();
 	}
-
+//sprawdzenie wody kolcow i ataku przeciwnikow
 	private void checkInsideWater() {
 		if (IsEntityInWater(hitbox, playing.getLevelManager().getCurrentLevel().getLevelData()))
 			currentHealth = 0;
@@ -203,7 +202,7 @@ public class Player extends Entity {
 
 		attackBox.y = hitbox.y + (Game.SCALE * 10);
 	}
-
+//aktualizacja hp i wytrzymalosci
 	private void updateHealthBar() {
 		healthWidth = (int) ((currentHealth / (float) maxHealth) * healthBarWidth);
 	}
@@ -220,20 +219,18 @@ public class Player extends Entity {
 
 	public void render(Graphics g, int lvlOffset) {
 		g.drawImage(animations[state][aniIndex], (int) (hitbox.x - xDrawOffset) - lvlOffset + flipX, (int) (hitbox.y - yDrawOffset + (int) (pushDrawOffset)), width * flipW, height, null);
-//		drawHitbox(g, lvlOffset);
-//		drawAttackBox(g, lvlOffset);
 		drawUI(g);
 	}
 
 	private void drawUI(Graphics g) {
-		// Background ui
+		//  ui w tle
 		g.drawImage(statusBarImg, statusBarX, statusBarY, statusBarWidth, statusBarHeight, null);
 
-		// Health bar
+		// pasek hp
 		g.setColor(Color.red);
 		g.fillRect(healthBarXStart + statusBarX, healthBarYStart + statusBarY, healthWidth, healthBarHeight);
 
-		// Power Bar
+		// pasek wytrzymalosci
 		g.setColor(Color.yellow);
 		g.fillRect(powerBarXStart + statusBarX, powerBarYStart + statusBarY, powerWidth, powerBarHeight);
 	}
@@ -256,7 +253,7 @@ public class Player extends Entity {
 			}
 		}
 	}
-
+//animacje ataku idle itp
 	private void setAnimation() {
 		int startAni = state;
 
@@ -356,7 +353,7 @@ public class Player extends Entity {
 			updateXPos(xSpeed);
 		moving = true;
 	}
-
+//skakanie
 	private void jump() {
 		if (inAir)
 			return;
@@ -369,7 +366,7 @@ public class Player extends Entity {
 		inAir = false;
 		airSpeed = 0;
 	}
-
+//aktualizacja pozycji
 	private void updateXPos(float xSpeed) {
 		if (CanMoveHere(hitbox.x + xSpeed, hitbox.y, hitbox.width, hitbox.height, lvlData))
 			hitbox.x += xSpeed;
@@ -381,7 +378,7 @@ public class Player extends Entity {
 			}
 		}
 	}
-
+//zmiany hp
 	public void changeHealth(int value) {
 		if (value < 0) {
 			if (state == HIT)
@@ -406,7 +403,7 @@ public class Player extends Entity {
 		else
 			pushBackDir = LEFT;
 	}
-
+//smierc
 	public void kill() {
 		currentHealth = 0;
 	}
@@ -415,7 +412,7 @@ public class Player extends Entity {
 		powerValue += value;
 		powerValue = Math.max(Math.min(powerValue, powerMaxValue), 0);
 	}
-
+//ladowanie
 	private void loadAnimations() {
 		BufferedImage img = LoadSave.GetSpriteAtlas(LoadSave.PLAYER_ATLAS);
 		animations = new BufferedImage[7][8];
@@ -425,7 +422,7 @@ public class Player extends Entity {
 
 		statusBarImg = LoadSave.GetSpriteAtlas(LoadSave.STATUS_BAR);
 	}
-
+//poziomy
 	public void loadLvlData(int[][] lvlData) {
 		this.lvlData = lvlData;
 		if (!IsEntityOnFloor(hitbox, lvlData))
@@ -460,7 +457,7 @@ public class Player extends Entity {
 	public void setJump(boolean jump) {
 		this.jump = jump;
 	}
-
+//resetowanie
 	public void resetAll() {
 		resetDirBooleans();
 		inAir = false;
@@ -491,7 +488,7 @@ public class Player extends Entity {
 	public int getTileY() {
 		return tileY;
 	}
-
+//mocny atak
 	public void powerAttack() {
 		if (powerAttackActive)
 			return;

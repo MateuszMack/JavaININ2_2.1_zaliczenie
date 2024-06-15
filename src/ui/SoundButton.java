@@ -7,7 +7,7 @@ import utilz.LoadSave;
 import static utilz.Constants.UI.PauseButtons.*;
 
 public class SoundButton extends PauseButton {
-
+//przyciski regulacji dzwieku
 	private BufferedImage[][] soundImgs;
 	private boolean mouseOver, mousePressed;
 	private boolean muted;

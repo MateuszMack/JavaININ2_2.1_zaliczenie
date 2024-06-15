@@ -7,7 +7,7 @@ import static utilz.Constants.Dialogue.*;
 import gamestates.Playing;
 
 public class Crabby extends Enemy {
-
+//hitbox kraba i zasieg ataku
 	public Crabby(float x, float y) {
 		super(x, y, CRABBY_WIDTH, CRABBY_HEIGHT, CRABBY);
 		initHitbox(22, 19);
@@ -19,7 +19,7 @@ public class Crabby extends Enemy {
 		updateAnimationTick();
 		updateAttackBox();
 	}
-
+//akcje kraba atak spadanie itp
 	private void updateBehavior(int[][] lvlData, Playing playing) {
 		if (firstUpdate)
 			firstUpdateCheck(lvlData);

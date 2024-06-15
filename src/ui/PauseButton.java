@@ -1,7 +1,7 @@
 package ui;
 
 import java.awt.Rectangle;
-
+//przycisk pauzy
 public class PauseButton {
 
 	protected int x, y, width, height;

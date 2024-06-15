@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import main.Game;
 import utilz.LoadSave;
-
+//animacje postaci i tlo ekranu credits. lokalizacje i wielkosci
 public class Credits extends State implements Statemethods {
 	private BufferedImage backgroundImg, creditsImg;
 	private int bgX, bgY, bgW, bgH;
@@ -68,19 +68,17 @@ public class Credits extends State implements Statemethods {
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
+
 
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
 
 	}
 

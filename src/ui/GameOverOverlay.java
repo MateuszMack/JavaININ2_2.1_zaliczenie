@@ -13,6 +13,7 @@ import main.Game;
 import utilz.LoadSave;
 
 public class GameOverOverlay {
+//koniec gry i wyswietlanie przyciskow do wyboru reset gry i powrot do menu
 
 	private Playing playing;
 	private BufferedImage img;

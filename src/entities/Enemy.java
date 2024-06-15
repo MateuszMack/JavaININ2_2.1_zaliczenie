@@ -21,7 +21,7 @@ public abstract class Enemy extends Entity {
 	protected boolean active = true;
 	protected boolean attackChecked;
 	protected int attackBoxOffsetX;
-
+//właściwości przeciwników wielkość życie prędkość hitbox atak wykrywanie akcji poruszanie się swobodne i interakcje z graczem gonienie i atak
 	public Enemy(float x, float y, int width, int height, int enemyType) {
 		super(x, y, width, height);
 		this.enemyType = enemyType;
@@ -152,7 +152,7 @@ public abstract class Enemy extends Entity {
 		}
 		attackChecked = true;
 	}
-
+//animowanie przeciwnikow
 	protected void updateAnimationTick() {
 		aniTick++;
 		if (aniTick >= ANI_SPEED) {

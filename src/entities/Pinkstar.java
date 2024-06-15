@@ -10,16 +10,16 @@ import gamestates.Playing;
 
 public class Pinkstar extends Enemy {
 
-	private boolean preRoll = true;
-	private int tickSinceLastDmgToPlayer;
-	private int tickAfterRollInIdle;
-	private int rollDurationTick, rollDuration = 300;
-
+	private boolean preRoll = true; //czy pinkstar jest w fazie przed toczeniem.
+	private int tickSinceLastDmgToPlayer; //licznik czasu od ostatniego zadania obrażeń graczowi.
+	private int tickAfterRollInIdle; //licznik czasu w stanie bezczynności po zakończeniu toczenia
+	private int rollDurationTick, rollDuration = 300; //licznik czasu trwania toczenia, maksymalny czas toczenia się
+//Konstruktor Pinkstar z odpowiednimi parametrami
 	public Pinkstar(float x, float y) {
 		super(x, y, PINKSTAR_WIDTH, PINKSTAR_HEIGHT, PINKSTAR);
-		initHitbox(17, 21);
+		initHitbox(17, 21); //ustawia hitbox
 	}
-
+//Aktualizacja Pinkstar przez metode updateBehavior i updateAnimationTick
 	public void update(int[][] lvlData, Playing playing) {
 		updateBehavior(lvlData, playing);
 		updateAnimationTick();
@@ -72,7 +72,7 @@ public class Pinkstar extends Enemy {
 			}
 		}
 	}
-
+//zadaje obrażenia graczowi, gdy ich hitboxy się przecinają i minęło wystarczająco dużo czasu od ostatniego zadania obrażeń
 	private void checkDmgToPlayer(Player player) {
 		if (hitbox.intersects(player.getHitbox()))
 			if (tickSinceLastDmgToPlayer >= 60) {
@@ -81,7 +81,7 @@ public class Pinkstar extends Enemy {
 			} else
 				tickSinceLastDmgToPlayer++;
 	}
-
+//ruch w strone gracza
 	private void setWalkDir(Player player) {
 		if (player.getHitbox().x > hitbox.x)
 			walkDir = RIGHT;
@@ -89,7 +89,7 @@ public class Pinkstar extends Enemy {
 			walkDir = LEFT;
 
 	}
-
+//ruch predkosc i kierunek
 	protected void move(int[][] lvlData, Playing playing) {
 		float xSpeed = 0;
 
@@ -115,7 +115,7 @@ public class Pinkstar extends Enemy {
 		changeWalkDir();
 
 	}
-
+//"toczenie sie"
 	private void checkRollOver(Playing playing) {
 		rollDurationTick++;
 		if (rollDurationTick >= rollDuration) {
@@ -123,7 +123,7 @@ public class Pinkstar extends Enemy {
 			rollDurationTick = 0;
 		}
 	}
-
+//koniec toczenia
 	private void rollOver(Playing playing) {
 		newState(IDLE);
 		playing.addDialogue((int) hitbox.x, (int) hitbox.y, QUESTION);

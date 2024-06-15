@@ -10,7 +10,7 @@ import gamestates.Playing;
 import main.Game;
 import utilz.LoadSave;
 import static utilz.Constants.UI.URMButtons.*;
-
+//ekran ukonczonego poziomu
 public class LevelCompletedOverlay {
 
 	private Playing playing;

@@ -15,8 +15,8 @@ public class Rain {
     private float rainSpeed = 1.25f;
     private BufferedImage rainParticle;
 
-    // Worth knowing, adding particles this way can cost a lot in
-    // computer power. Disable it if the game lags.
+
+    // generowanie kropli deszczu nie ustawiac za duzo bo bedzie zamulac
     public Rain() {
         rand = new Random();
         drops = new Point2D.Float[1000];
@@ -28,7 +28,7 @@ public class Rain {
         for (int i = 0; i < drops.length; i++)
             drops[i] = getRndPos();
     }
-
+//pojawianie się kropli w losowych miejscach
     private Point2D.Float getRndPos() {
         return new Point2D.Float((int) getNewX(0), rand.nextInt(Game.GAME_HEIGHT));
     }

@@ -11,20 +11,20 @@ import utilz.LoadSave;
 import static utilz.Constants.UI.URMButtons.*;
 
 public class PauseOverlay {
-
+//obsługa i wyświetlanie nakładki pauzy w grze.interfejs zarządzania opcjami pauzy: powrót do menu, ponowne uruchomienie, wznowienie gry.
 	private Playing playing;
 	private BufferedImage backgroundImg;
 	private int bgX, bgY, bgW, bgH;
 	private AudioOptions audioOptions;
 	private UrmButton menuB, replayB, unpauseB;
-
+//stan gry
 	public PauseOverlay(Playing playing) {
 		this.playing = playing;
 		loadBackground();
 		audioOptions = playing.getGame().getAudioOptions();
 		createUrmButtons();
 	}
-
+//tworzenie i pozycje
 	private void createUrmButtons() {
 		int menuX = (int) (313 * Game.SCALE);
 		int replayX = (int) (387 * Game.SCALE);
@@ -43,7 +43,7 @@ public class PauseOverlay {
 		bgX = Game.GAME_WIDTH / 2 - bgW / 2;
 		bgY = (int) (25 * Game.SCALE);
 	}
-
+//aktualizowanie stanu gry
 	public void update() {
 
 		menuB.update();
@@ -81,7 +81,7 @@ public class PauseOverlay {
 		else
 			audioOptions.mousePressed(e);
 	}
-
+//dzialanie przyciskow
 	public void mouseReleased(MouseEvent e) {
 		if (isIn(e, menuB)) {
 			if (menuB.isMousePressed()) {
